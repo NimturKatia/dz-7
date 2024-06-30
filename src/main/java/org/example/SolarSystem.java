@@ -1,48 +1,48 @@
 package org.example;
 
 public enum SolarSystem {
-    MERCURY(0, 100),
-    VENUS(2000, 200, MERCURY),
-    EARTH(3000,300,VENUS),
-    MARS(4000,400,EARTH),
-    JUPITER(5000,500,MARS),
-    SATURN(6000,600,JUPITER),
-    URANUS(7000,700,SATURN),
-    NEPTUNE(8000,800,URANUS);
+    MERCURY(0, 0.38),
+    VENUS(340, 0.72, MERCURY),
+    EARTH(280,1000,VENUS),
+    MARS(520,933,EARTH),
+    JUPITER(3680,4850,MARS),
+    SATURN(4320,8300,JUPITER),
+    URANUS(9700,19200,SATURN),
+    NEPTUNE(10880,29900,URANUS);
 
-    private int prevDistance = 0;
-    private int radius = 0;
+    private double prevDistance = 0;
+    private double radius = 0;
     private SolarSystem previous;
     private int planetNumberToSun = 0;
-    private int distanceToSun = 0;
+    private double distanceToSun = 0;
 
     // A general constructor
-    SolarSystem(int prevDistance, int radius, SolarSystem previous){
+    SolarSystem(double prevDistance, double radius, SolarSystem previous){
         this.prevDistance = prevDistance;
         this.radius = radius;
         this.previous = previous;
         this.planetNumberToSun = previous.planetNumberToSun + 1;
-        this.distanceToSun = previous.getDistanceToSun() + previous.getRadius() + this.prevDistance;
+        this.distanceToSun = previous.getDistanceToSun() + previous.getRadius() * 2 + this.prevDistance;
     }
 
     // A constructor for Mercury
-    SolarSystem(int prevDistance, int radius){
+    SolarSystem(double prevDistance, double radius){
         this.prevDistance = prevDistance;
         this.radius = radius;
         this.planetNumberToSun = 1;
-        this.distanceToSun = 1000;
+        this.distanceToSun = 390;
     }
 
     // Getters
-    public int getPrevDistance() {
+    public double getPrevDistance() {
         return prevDistance;
     }
 
-    public int getRadius() {
+    public double getRadius() {
         return radius;
     }
 
-    public int getDistanceToSun() {
+    public double getDistanceToSun() {
         return distanceToSun;
     }
 
@@ -58,6 +58,5 @@ public enum SolarSystem {
             return null;
         }
     }
-
 
 }
