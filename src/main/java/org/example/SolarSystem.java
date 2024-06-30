@@ -22,7 +22,7 @@ public enum SolarSystem {
         this.radius = radius;
         this.previous = previous;
         this.planetNumberToSun = previous.planetNumberToSun + 1;
-        this.distanceToSun = previous.getDistanceToSun() + previous.getRadius() * 2 + this.prevDistance;
+        this.distanceToSun = previous.getDistanceToSun() + this.prevDistance;
     }
 
     // A constructor for Mercury
